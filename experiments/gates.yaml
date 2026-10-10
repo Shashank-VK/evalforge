@@ -1,0 +1,5 @@
+min_aggregate_score: 0.80
+max_allowed_regressions: 2
+max_latency_p95_ms: 150.0
+max_cost_per_case_usd: 0.05
+required_pass_rate: 0.80

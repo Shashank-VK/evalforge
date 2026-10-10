@@ -1,0 +1,27 @@
+name: support_policy_v2_evaluation
+cases: datasets/support.jsonl
+spending_cap_usd: 5.00
+max_concurrency: 4
+max_retries: 3
+seed: 42
+
+configs:
+  - id: baseline
+    provider: fixture
+    model: deterministic-v1
+    prompt: prompts/support_v1.txt
+    temperature: 0.0
+    max_tokens: 300
+
+  - id: candidate
+    provider: fixture
+    model: deterministic-v1
+    prompt: prompts/support_v2.txt
+    temperature: 0.0
+    max_tokens: 300
+
+scorers:
+  - contains
+  - semantic_similarity
+  - citation
+  - rubric: rubrics/helpful.yaml

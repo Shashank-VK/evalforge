@@ -1,0 +1,131 @@
+{
+  "version": "2026.10.10",
+  "responses": {
+    "case-001:baseline": {
+      "response_text": "Yes, as a gold tier member you are eligible for a full refund if canceled within 14 days of purchase under our standard billing terms.",
+      "input_tokens": 42,
+      "output_tokens": 28,
+      "latency_ms": 35.0,
+      "estimated_cost_usd": 0.000023
+    },
+    "case-001:candidate": {
+      "response_text": "Per our subscription policy [doc-billing#chunk1], gold members canceling an annual subscription within 14 days are eligible for a full refund directly to their payment method.",
+      "input_tokens": 68,
+      "output_tokens": 34,
+      "latency_ms": 28.0,
+      "estimated_cost_usd": 0.000031
+    },
+    "case-002:baseline": {
+      "response_text": "You can rotate API keys from the settings page. Click regenerate on the active key.",
+      "input_tokens": 40,
+      "output_tokens": 20,
+      "latency_ms": 30.0,
+      "estimated_cost_usd": 0.000018
+    },
+    "case-002:candidate": {
+      "response_text": "To rotate API keys securely, navigate to Organization Settings > API Keys, click Regenerate to issue a new key, and revoke the old key [doc-security#chunk3]. Never share keys in plain text.",
+      "input_tokens": 65,
+      "output_tokens": 38,
+      "latency_ms": 25.0,
+      "estimated_cost_usd": 0.000033
+    },
+    "case-003:baseline": {
+      "response_text": "Enterprise plans have a 99.95% uptime SLA guarantee with uptime credit if service drops below target.",
+      "input_tokens": 39,
+      "output_tokens": 22,
+      "latency_ms": 32.0,
+      "estimated_cost_usd": 0.000019
+    },
+    "case-003:candidate": {
+      "response_text": "Under Enterprise Master Agreement [doc-enterprise#chunk2], our commitment is a 99.95% SLA. If uptime drops below 99.95% in any calendar month, you are eligible for uptime credit.",
+      "input_tokens": 64,
+      "output_tokens": 36,
+      "latency_ms": 26.0,
+      "estimated_cost_usd": 0.000031
+    },
+    "case-004:baseline": {
+      "response_text": "Yes, you can configure audit log export to your designated S3 bucket from the compliance console.",
+      "input_tokens": 41,
+      "output_tokens": 21,
+      "latency_ms": 31.0,
+      "estimated_cost_usd": 0.000019
+    },
+    "case-004:candidate": {
+      "response_text": "Audit log streaming allows daily or real-time export to an external S3 bucket [doc-compliance#chunk4]. Encrypted logs are deposited with SHA-256 verification.",
+      "input_tokens": 66,
+      "output_tokens": 32,
+      "latency_ms": 27.0,
+      "estimated_cost_usd": 0.000029
+    },
+    "case-005:baseline": {
+      "response_text": "Our free tier includes automatic SSL provisioning when you connect a custom domain.",
+      "input_tokens": 38,
+      "output_tokens": 17,
+      "latency_ms": 29.0,
+      "estimated_cost_usd": 0.000016
+    },
+    "case-005:candidate": {
+      "response_text": "Custom domain connections on all accounts including free tier feature automatic SSL certificate issuance [doc-networking#chunk1] via Let's Encrypt.",
+      "input_tokens": 63,
+      "output_tokens": 28,
+      "latency_ms": 24.0,
+      "estimated_cost_usd": 0.000026
+    },
+    "case-006:baseline": {
+      "response_text": "Soft-deleted items are retained for 30 days before permanent purge.",
+      "input_tokens": 43,
+      "output_tokens": 15,
+      "latency_ms": 28.0,
+      "estimated_cost_usd": 0.000016
+    },
+    "case-006:candidate": {
+      "response_text": "In accordance with data retention rules [doc-storage#chunk5], soft-deleted items enter a 30 days recovery window before permanent purge from backup storage.",
+      "input_tokens": 69,
+      "output_tokens": 31,
+      "latency_ms": 25.0,
+      "estimated_cost_usd": 0.000029
+    },
+    "case-007:baseline": {
+      "response_text": "Enterprise accounts can enforce SAML 2.0 single sign-on with Okta and Azure AD.",
+      "input_tokens": 41,
+      "output_tokens": 18,
+      "latency_ms": 30.0,
+      "estimated_cost_usd": 0.000017
+    },
+    "case-007:candidate": {
+      "response_text": "Single sign-on can be enforced via SAML 2.0 with IdPs including Okta and PingIdentity [doc-security#chunk8]. JIT user provisioning is supported.",
+      "input_tokens": 67,
+      "output_tokens": 30,
+      "latency_ms": 25.0,
+      "estimated_cost_usd": 0.000028
+    },
+    "case-008:baseline": {
+      "response_text": "The maximum file upload limit is 25 MB per attachment.",
+      "input_tokens": 39,
+      "output_tokens": 14,
+      "latency_ms": 28.0,
+      "estimated_cost_usd": 0.000015
+    },
+    "case-008:candidate": {
+      "response_text": "Attachment uploads are governed by a 25 MB upload limit per file [doc-limits#chunk2]. Multi-part uploads are used for reliable transfer.",
+      "input_tokens": 65,
+      "output_tokens": 27,
+      "latency_ms": 24.0,
+      "estimated_cost_usd": 0.000026
+    },
+    "code-001:baseline": {
+      "response_text": "{\"status\": \"error\", \"code\": \"ERR_NOT_FOUND\"}",
+      "input_tokens": 35,
+      "output_tokens": 15,
+      "latency_ms": 20.0,
+      "estimated_cost_usd": 0.000014
+    },
+    "code-002:baseline": {
+      "response_text": "def validate_email(email: str) -> bool:\n    return '@' in email and '.' in email",
+      "input_tokens": 38,
+      "output_tokens": 20,
+      "latency_ms": 22.0,
+      "estimated_cost_usd": 0.000017
+    }
+  }
+}

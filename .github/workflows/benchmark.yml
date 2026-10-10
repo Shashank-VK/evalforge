@@ -1,0 +1,49 @@
+name: Live Model Benchmark (Manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      experiment_spec:
+        description: "Path to experiment spec file"
+        required: true
+        default: "experiments/support_eval.yaml"
+      spending_cap_usd:
+        description: "Maximum budget limit in USD"
+        required: true
+        default: "5.00"
+
+jobs:
+  benchmark:
+    name: Hosted Model Benchmark Execution
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Execute Benchmark Run
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          MAX_RUN_COST_USD: ${{ github.event.inputs.spending_cap_usd }}
+        run: |
+          evalforge run "${{ github.event.inputs.experiment_spec }}" --spending-cap "${{ github.event.inputs.spending_cap_usd }}"
+          
+          # Find latest run ID and export HTML report
+          LATEST_RUN_ID=$(python -c "from evalforge.storage.repository import Repository; r = Repository('evalforge.db'); print(r.list_runs()[0].id)")
+          evalforge export "$LATEST_RUN_ID" --format html --output "benchmark_report.html"
+
+      - name: Upload HTML Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: evalforge-benchmark-report
+          path: benchmark_report.html

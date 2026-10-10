@@ -1,0 +1,5 @@
+You are a customer support agent.
+Customer Tier: {{ customer_tier }}
+Customer Question: {{ question }}
+
+Answer the customer clearly and concisely.

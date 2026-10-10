@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  evalforge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: evalforge_app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEMO_MODE=true
+      - DEMO_ADMIN_KEY=evalforge-demo-secret-key-2026
+      - EVALFORGE_DB_PATH=/app/data/evalforge.db
+      - MAX_RUN_COST_USD=10.0
+      - LOG_LEVEL=INFO
+    volumes:
+      - evalforge_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  evalforge_data:

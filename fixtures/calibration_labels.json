@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "labels": [
+    {
+      "case_id": "case-001",
+      "human_rating": "pass",
+      "expected_band": "pass",
+      "confidence": 0.98,
+      "notes": "Accurately conveys 14-day full refund policy for gold tier customers"
+    },
+    {
+      "case_id": "case-002",
+      "human_rating": "pass",
+      "expected_band": "pass",
+      "confidence": 0.95,
+      "notes": "Explains API key rotation and key revocation in settings"
+    },
+    {
+      "case_id": "case-003",
+      "human_rating": "pass",
+      "expected_band": "pass",
+      "confidence": 0.96,
+      "notes": "Identifies 99.95% SLA and uptime credits without false 100% guarantee"
+    },
+    {
+      "case_id": "case-004",
+      "human_rating": "pass",
+      "expected_band": "pass",
+      "confidence": 0.94,
+      "notes": "Affirms audit log export to S3 bucket"
+    },
+    {
+      "case_id": "case-005",
+      "human_rating": "pass",
+      "expected_band": "pass",
+      "confidence": 0.92,
+      "notes": "Correctly states free tier custom domain SSL support"
+    },
+    {
+      "case_id": "case-006",
+      "human_rating": "pass",
+      "expected_band": "pass",
+      "confidence": 0.95,
+      "notes": "Identifies 30-day retention window for soft deleted records"
+    },
+    {
+      "case_id": "case-007",
+      "human_rating": "pass",
+      "expected_band": "pass",
+      "confidence": 0.97,
+      "notes": "Confirms SAML 2.0 and Okta integration"
+    },
+    {
+      "case_id": "case-008",
+      "human_rating": "pass",
+      "expected_band": "pass",
+      "confidence": 0.93,
+      "notes": "States 25 MB file upload limit"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+name: CI Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  offline-gate:
+    name: Deterministic Offline Fixture Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Verify Secret Scanning / No Credentials in repo
+        run: |
+          ! grep -rE "sk-[a-zA-Z0-9]{20,}" . --exclude-dir=.git --exclude-dir=.venv || (echo "Found committed secret!" && exit 1)
+
+      - name: Run Deterministic Offline Test Suite
+        env:
+          DEMO_MODE: "true"
+          DEMO_ADMIN_KEY: "test-demo-secret-key"
+          EVALFORGE_FIXTURES_PATH: "fixtures/recorded_responses.json"
+        run: |
+          pytest -v
+
+      - name: Run CI Experiment & Evaluate Regression Gate
+        run: |
+          evalforge validate experiments/ci_experiment.yaml
+          evalforge run experiments/ci_experiment.yaml
+          # Seed demo runs and execute regression comparison gate
+          python scripts/seed.py
+          # Run gate check against passing gates
+          RUN_IDS=$(python -c "from evalforge.storage.repository import Repository; r = Repository('evalforge.db'); runs = r.list_runs(); print(f'{runs[1].id} {runs[0].id}')")
+          evalforge compare $RUN_IDS --gate experiments/gates.yaml
